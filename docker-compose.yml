@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+    snap:
+        hostname: snap-host
+        build: 
+            context: .
+            dockerfile: Dockerfile.snap
+        depends_on:
+            - wait
+        links:
+            - wait
+
+    telegraf:
+        hostname: telegraf-host
+        build: 
+            context: .
+            dockerfile: Dockerfile.telegraf
+        depends_on:
+            - wait
+        links:
+            - wait
+
+    grafana:
+        build:
+            context: .
+            dockerfile: Dockerfile.grafana
+        volumes:
+            - ./elasticsearch:/var/lib/elasticsearch
+            - ./graphite:/opt/graphite/storage/whisper
+            - ./supervisor:/var/log/supervisor
+        ports:
+            - "8888:80"
+            - "8181:81"
+            - "3000:3000"
+        expose:
+            - "9200"
+            - "2003"
+            - "2004"
+            - "7002"
+    wait:
+        image: waisbrot/wait
+        depends_on:
+            - grafana
+        links:
+            - grafana
+        environment:
+            - TARGETS=grafana:80,grafana:81,grafana:9200
