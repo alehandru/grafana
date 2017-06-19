@@ -1,0 +1,33 @@
+{
+    "version": 1,
+    "schedule": {
+        "type": "simple",
+        "interval": "720s"
+    },
+    "workflow": {
+        "collect": {
+            "metrics": {
+                "/intel/procfs/swap/*": {}
+            },
+            "config": {
+                "/intel/procfs/swap": {
+                    "proc_path": "/proc"
+                }
+            },
+            "process": null,
+            "publish": [
+                {
+                  "plugin_name": "elasticsearch",
+                  "config": {
+                    "protocol": "http",
+                    "address": "grafana",
+                    "port": 9200,
+                    "index": "snap-log",
+                    "publish_fields": "Namespace|Config|Data|Timestamp|Unit|Version"
+                  }
+                }
+              ]
+        }
+    }
+}
+

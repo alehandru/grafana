@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "schedule": {
+    "type": "simple",
+    "interval": "720s"
+  },
+  "workflow": {
+    "collect": {
+      "metrics": {
+        "/intel/utmp/users/*": {}
+      },
+      "config": {},
+      "process": null,
+      "publish": [
+        {
+          "plugin_name": "elasticsearch",
+          "config": {
+            "protocol": "http",
+            "address": "grafana",
+            "port": 9200,
+            "index": "snap-log",
+            "publish_fields": "Namespace|Config|Data|Timestamp|Unit|Version"
+          }
+        }
+      ]
+    }
+  }
+}

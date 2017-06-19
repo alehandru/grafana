@@ -2,7 +2,7 @@
     "version": 1,
     "schedule": {
         "type": "simple",
-        "interval": "360s"
+        "interval": "720s"
     },
     "workflow": {
         "collect": {

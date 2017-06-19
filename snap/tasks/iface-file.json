@@ -2,12 +2,12 @@
   "version": 1,
   "schedule": {
     "type": "simple",
-    "interval": "120s"
+    "interval": "360s"
   },
   "workflow": {
     "collect": {
       "metrics": {
-        "/intel/procfs/iface/*/": {}
+        "/intel/procfs/iface/*": {}
       },
      "publish": [
         {
