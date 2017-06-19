@@ -1,4 +1,3 @@
-
 {
   "__inputs": [
     {
@@ -124,14 +123,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "system.n_users",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "max"
                 }
               ],
-              "query": "",
+              "query": "Namespace: \"/intel/utmp/users/\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -221,14 +220,16 @@
               "hide": false,
               "metrics": [
                 {
-                  "field": "system.n_cpus",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
-                  "settings": {},
-                  "type": "count"
+                  "settings": {
+                    "missing": 0
+                  },
+                  "type": "cardinality"
                 }
               ],
-              "query": "",
+              "query": "Namespace:intel/procfs/cpu/*/user_percentage",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -354,7 +355,7 @@
           ],
           "datasource": "Snap",
           "decimals": 0,
-          "format": "bits",
+          "format": "decbytes",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -422,7 +423,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/filesystem/vda/space_used",
+              "query": "Namespace:intel/procfs/filesystem/*/space_used",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -518,7 +519,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/raintank/processes/proc_num\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -547,7 +548,7 @@
           ],
           "datasource": "Snap",
           "decimals": 2,
-          "format": "percent",
+          "format": "s",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -610,17 +611,17 @@
                 {
                   "field": "Data",
                   "id": "1",
-                  "inlineScript": "_value /1000000000",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "settings": {
                     "script": {
-                      "inline": "_value /1000000000"
+                      "inline": "_value/100"
                     }
                   },
                   "type": "avg"
                 }
               ],
-              "query": "Namespace :intel/psutil/cpu/cpu-total/user",
+              "query": "Namespace :\"intel/psutil/cpu/cpu-total/user\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -712,17 +713,17 @@
                 {
                   "field": "Data",
                   "id": "1",
-                  "inlineScript": "_value/(60*60*24)",
+                  "inlineScript": "(_value/100)/60",
                   "meta": {},
                   "settings": {
                     "script": {
-                      "inline": "_value/(60*60*24)"
+                      "inline": "(_value/100)/60"
                     }
                   },
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/idle",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/idle\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -798,7 +799,7 @@
             {
               "bucketAggs": [
                 {
-                  "field": "@timestamp",
+                  "field": "Timestamp",
                   "id": "2",
                   "settings": {
                     "interval": "auto",
@@ -904,13 +905,18 @@
                 {
                   "field": "Data",
                   "id": "1",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "pipelineAgg": "select metric",
-                  "settings": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/100"
+                    }
+                  },
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/system",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/system\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -933,9 +939,14 @@
                 {
                   "field": "Data",
                   "id": "1",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "pipelineAgg": "select metric",
-                  "settings": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/100"
+                    }
+                  },
                   "type": "avg"
                 }
               ],
@@ -963,13 +974,18 @@
                 {
                   "field": "Data",
                   "id": "1",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "pipelineAgg": "select metric",
-                  "settings": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/100"
+                    }
+                  },
                   "type": "max"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/irq",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/irq\"",
               "refId": "C",
               "timeField": "Timestamp"
             },
@@ -993,13 +1009,18 @@
                 {
                   "field": "Data",
                   "id": "1",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "pipelineAgg": "select metric",
-                  "settings": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/100"
+                    }
+                  },
                   "type": "max"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/steal",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/steal\"",
               "refId": "D",
               "timeField": "Timestamp"
             },
@@ -1023,13 +1044,18 @@
                 {
                   "field": "Data",
                   "id": "1",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "pipelineAgg": "select metric",
-                  "settings": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/100"
+                    }
+                  },
                   "type": "max"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/softirq",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/softirq\"",
               "refId": "E",
               "timeField": "Timestamp"
             },
@@ -1053,13 +1079,18 @@
                 {
                   "field": "Data",
                   "id": "1",
+                  "inlineScript": "_value/100",
                   "meta": {},
                   "pipelineAgg": "select metric",
-                  "settings": {},
+                  "settings": {
+                    "script": {
+                      "inline": "_value/100"
+                    }
+                  },
                   "type": "max"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/iowait",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/iowait\"",
               "refId": "F",
               "timeField": "Timestamp"
             }
@@ -1084,7 +1115,7 @@
           },
           "yaxes": [
             {
-              "format": "percent",
+              "format": "s",
               "label": "",
               "logBase": 1,
               "max": null,
@@ -1158,7 +1189,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/psutil/load1",
+              "query": "Namespace:\"intel/psutil/load\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -1187,7 +1218,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/psutil/load5",
+              "query": "Namespace:\"intel/psutil/load5\"",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -1216,7 +1247,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/psutil/load15",
+              "query": "Namespace:\"intel/psutil/load15\"",
               "refId": "C",
               "timeField": "Timestamp"
             }
@@ -1408,7 +1439,7 @@
           "yaxes": [
             {
               "format": "ns",
-              "label": null,
+              "label": "",
               "logBase": 1,
               "max": null,
               "min": null,
@@ -1607,17 +1638,13 @@
                 {
                   "field": "Data",
                   "id": "1",
-                  "inlineScript": "_value /1000000000",
+                  "inlineScript": null,
                   "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value /1000000000"
-                    }
-                  },
+                  "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/filesystem/vda/prec_space_used",
+              "query": "Namespace:\"intel/procfs/filesystem///space_percent_used\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -1920,6 +1947,166 @@
               "show": true
             }
           ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Snap",
+          "decimals": 1,
+          "fill": 1,
+          "id": 23,
+          "interval": ">10m",
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "used",
+              "bucketAggs": [
+                {
+                  "field": "Timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Data",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "Namespace:\"/intel/procfs/swap/all/used_percent\"",
+              "refId": "A",
+              "timeField": "Timestamp"
+            },
+            {
+              "alias": "free",
+              "bucketAggs": [
+                {
+                  "field": "Timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Data",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "Namespace:\"/intel/procfs/swap/all/free_percent\"",
+              "refId": "B",
+              "timeField": "Timestamp"
+            },
+            {
+              "alias": "cache",
+              "bucketAggs": [
+                {
+                  "field": "Timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Data",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "Namespace:\"/intel/procfs/swap/all/cached_percent\"",
+              "refId": "C",
+              "timeField": "Timestamp"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": "2d",
+          "timeShift": null,
+          "title": "Swap(%)",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
         }
       ],
       "repeat": null,
@@ -2098,7 +2285,7 @@
           },
           "yaxes": [
             {
-              "format": "bits",
+              "format": "bytes",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -2106,7 +2293,7 @@
               "show": true
             },
             {
-              "format": "short",
+              "format": "bytes",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -2600,14 +2787,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "netstat.tcp_established",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/staples/procfs/netstat/tcp_established\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -2628,14 +2815,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "netstat.tcp_close_wait",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/staples/procfs/netstat/tcp_close_wait\"",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -2643,7 +2830,7 @@
               "alias": "tcp_time_wait",
               "bucketAggs": [
                 {
-                  "field": "@timestamp",
+                  "field": "Timestamp",
                   "id": "2",
                   "settings": {
                     "interval": "auto",
@@ -2656,14 +2843,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "netstat.tcp_time_wait",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/staples/procfs/netstat/tcp_time_wait\"",
               "refId": "C",
               "timeField": "Timestamp"
             },
@@ -2671,7 +2858,7 @@
               "alias": "tcp_syn_sent",
               "bucketAggs": [
                 {
-                  "field": "@timestamp",
+                  "field": "Timestamp",
                   "id": "2",
                   "settings": {
                     "interval": "auto",
@@ -2684,14 +2871,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "netstat.tcp_syn_sent",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/staples/procfs/netstat/tcp_syn_sent\"",
               "refId": "D",
               "timeField": "Timestamp"
             },
@@ -2699,7 +2886,7 @@
               "alias": "tcp_last_ack",
               "bucketAggs": [
                 {
-                  "field": "@timestamp",
+                  "field": "Timestamp",
                   "id": "2",
                   "settings": {
                     "interval": "auto",
@@ -2712,14 +2899,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "netstat.tcp_last_ack",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/staples/procfs/netstat/tcp_last_ack\"",
               "refId": "E",
               "timeField": "Timestamp"
             },
@@ -2727,7 +2914,7 @@
               "alias": "tcp_listen",
               "bucketAggs": [
                 {
-                  "field": "@timestamp",
+                  "field": "Timestamp",
                   "id": "2",
                   "settings": {
                     "interval": "auto",
@@ -2740,14 +2927,14 @@
               "dsType": "elasticsearch",
               "metrics": [
                 {
-                  "field": "netstat.tcp_listen",
+                  "field": "Data",
                   "id": "1",
                   "meta": {},
                   "settings": {},
                   "type": "avg"
                 }
               ],
-              "query": "",
+              "query": "Namespace:\"/staples/procfs/netstat/tcp_listen\"",
               "refId": "F",
               "timeField": "Timestamp"
             }
@@ -2755,7 +2942,7 @@
           "thresholds": [],
           "timeFrom": "6h",
           "timeShift": null,
-          "title": "TCP(NOT WORKING)",
+          "title": "TCP",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -3051,5 +3238,5 @@
   },
   "timezone": "browser",
   "title": "Snap",
-  "version": 11
+  "version": 1
 }
