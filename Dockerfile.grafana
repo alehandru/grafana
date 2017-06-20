@@ -137,7 +137,9 @@ RUN chown www-data:www-data /www/data/kibana/config.js
 
 # Configuration for Elasticsearch
 ADD	./elasticsearch/run /usr/local/bin/run_elasticsearch
-RUN echo 'network.host: 0.0.0.0' >> /opt/elasticsearch/config/elasticsearch.yml
+RUN echo 'network.host: _site_' >> /opt/elasticsearch/config/elasticsearch.yml
+RUN echo 'http.port: 9200' >> /opt/elasticsearch/config/elasticsearch.yml
+RUN echo 'network.bind_host: 0.0.0.0' >> /opt/elasticsearch/config/elasticsearch.yml
 
 # User for Elastic Search
 RUN groupadd ${GROUPNAME}

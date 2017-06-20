@@ -2117,7 +2117,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": true,
+      "collapse": false,
       "height": 250,
       "panels": [
         {
@@ -2176,7 +2176,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:/intel/procfs/meminfo/mem_used",
+              "query": "Namespace:\"/intel/procfs/meminfo/mem_used\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -2204,7 +2204,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:/intel/procfs/meminfo/mem_free",
+              "query": "Namespace:\"/intel/procfs/meminfo/mem_free\"",
               "refId": "C",
               "timeField": "Timestamp"
             },
@@ -2232,7 +2232,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:/intel/procfs/meminfo/cached",
+              "query": "Namespace:\"/intel/procfs/meminfo/cached\"",
               "refId": "D",
               "timeField": "Timestamp"
             },
@@ -2260,7 +2260,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:/intel/procfs/meminfo/mem_total",
+              "query": "Namespace:\"/intel/procfs/meminfo/mem_total\"",
               "refId": "B",
               "timeField": "Timestamp"
             }
@@ -3238,5 +3238,5 @@
   },
   "timezone": "browser",
   "title": "Snap",
-  "version": 1
+  "version": 3
 }
