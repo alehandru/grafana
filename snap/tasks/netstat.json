@@ -1,0 +1,40 @@
+{
+    "schedule": {
+        "interval": "120s",
+        "type": "simple"
+    },
+    "version": 1,
+    "workflow": {
+        "collect": {
+            "config": {},
+            "metrics": {
+                "/staples/procfs/netstat/tcp_close": {},
+                "/staples/procfs/netstat/tcp_close_wait": {},
+                "/staples/procfs/netstat/tcp_closing": {},
+                "/staples/procfs/netstat/tcp_established": {},
+                "/staples/procfs/netstat/tcp_fin_wait1": {},
+                "/staples/procfs/netstat/tcp_fin_wait2": {},
+                "/staples/procfs/netstat/tcp_last_ack": {},
+                "/staples/procfs/netstat/tcp_listen": {},
+                "/staples/procfs/netstat/tcp_none": {},
+                "/staples/procfs/netstat/tcp_syn_recv": {},
+                "/staples/procfs/netstat/tcp_syn_sent": {},
+                "/staples/procfs/netstat/tcp_time_wait": {},
+                "/staples/procfs/netstat/udp_socket": {}
+            },
+             "publish": [
+                {
+                  "plugin_name": "elasticsearch",
+                  "config": {
+                    "protocol": "http",
+                    "address": "grafana",
+                    "port": 9200,
+                    "index": "snap-log",
+                    "publish_fields": "Namespace|Config|Data|Timestamp|Unit|Version"
+                  }
+                }
+              ]
+
+        }
+    }
+}
