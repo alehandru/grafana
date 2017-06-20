@@ -45,7 +45,7 @@
   "hideControls": false,
   "id": null,
   "links": [],
-  "refresh": false,
+  "refresh": "30s",
   "rows": [
     {
       "collapse": false,
@@ -322,7 +322,9 @@
                   "field": "Data",
                   "id": "1",
                   "meta": {},
-                  "settings": {},
+                  "settings": {
+                    "missing": 0
+                  },
                   "type": "max"
                 }
               ],
@@ -332,7 +334,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Total",
+          "title": "Memory",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -846,7 +848,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": true,
+      "collapse": false,
       "height": "250px",
       "panels": [
         {
@@ -950,7 +952,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/psutil/cpu/cpu-total/user",
+              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/user\"",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -1096,7 +1098,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "24h",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "CPU",
           "tooltip": {
@@ -1253,7 +1255,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Load",
           "tooltip": {
@@ -1298,7 +1300,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": true,
+      "collapse": false,
       "height": 250,
       "panels": [
         {
@@ -1419,7 +1421,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Disk",
           "tooltip": {
@@ -1548,7 +1550,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Disk I/O",
           "tooltip": {
@@ -1644,13 +1646,13 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"intel/procfs/filesystem///space_percent_used\"",
+              "query": "Namespace:\"intel/procfs/filesystem////space_percent_used\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
           ],
           "thresholds": [],
-          "timeFrom": "2d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Used(%)",
           "tooltip": {
@@ -1781,7 +1783,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "2d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Used",
           "tooltip": {
@@ -1912,7 +1914,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "2d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Free",
           "tooltip": {
@@ -2072,7 +2074,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "2d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Swap(%)",
           "tooltip": {
@@ -2266,7 +2268,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "2d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Memory",
           "tooltip": {
@@ -2404,7 +2406,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "2d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Memory(%)",
           "tooltip": {
@@ -2449,7 +2451,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": true,
+      "collapse": false,
       "height": 250,
       "panels": [
         {
@@ -2559,7 +2561,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "1d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Network",
           "tooltip": {
@@ -2700,7 +2702,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "1d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "Packets",
           "tooltip": {
@@ -2940,7 +2942,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "6h",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "TCP",
           "tooltip": {
@@ -3156,7 +3158,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": "1d",
+          "timeFrom": "1h",
           "timeShift": null,
           "title": "DROP",
           "tooltip": {
@@ -3238,5 +3240,5 @@
   },
   "timezone": "browser",
   "title": "Snap",
-  "version": 3
+  "version": 11
 }
