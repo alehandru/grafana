@@ -20,6 +20,18 @@ control:
   # temp_dir_path sets the temporary directory which houses the temporary files 
   temp_dir_path: /tmp
 
+  # plugins section contains plugin config settings that will be applied for
+  # plugins across tasks.
+  # plugins:
+  #   publisher:
+  #     elasticsearch:
+  #       all:
+  #         protocol: "http"
+  #         address: "grafana"
+  #         port: 9200
+  #         index: "snap-log"
+  #         publish_fields: "Namespace|Config|Data|Timestamp|Unit|Version"
+
   # tags section contains global tags that will be applied on collected metrics
   # across tasks.
   tags:

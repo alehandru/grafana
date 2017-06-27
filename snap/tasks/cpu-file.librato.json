@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "schedule": {
+    "type": "simple",
+    "interval": "60s"
+  },
+  "workflow": {
+    "collect": {
+      "metrics": {
+        "/intel/procfs/cpu/*": {}
+      },
+      "config": {
+        "/intel/procfs/cpu": {
+          "proc_path": "/proc"
+        }
+      },
+      "publish": [
+        {
+          "plugin_name": "publisher-librato",
+          "config": {
+            "user": "user@librato.com",
+            "token": "user_token",
+            "url": "https://metrics-api.librato.com/v1/measurements",
+            "prefix": ""
+          }
+        }
+      ]
+    }
+  }
+}
