@@ -11,12 +11,12 @@ do
     else
        echo "Elastic Search service is OFFLINE($curl_exit_code)."
     fi
-    sleep 5
+    sleep 10
 done 
 
 echo '******************** Starting snap agent ...'
 pushd /opt/snap
-/opt/snap/sbin/snapteld --config /opt/snap/sbin/config.yaml --log-path '' --log-level 2
+/opt/snap/sbin/snapteld --config /opt/snap/sbin/config.yaml --log-path '' --log-level 1
 popd
 echo 'done.'
 

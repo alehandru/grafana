@@ -33,6 +33,14 @@ control:
     /system/mem/used:
       individual_tag_1: individual_value_tag_1
 
+  plugins:
+     publisher:
+       publisher-librato:
+         all:
+           user: alexandru@librato.com
+           token: 170ff815cdcce05f874d004122b6cc251a5227866152cd45763c104becf33e9c
+           url: https://collectd.librato.com/v1/measurements
+           prefix: ""
 
 
 

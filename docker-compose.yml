@@ -38,4 +38,4 @@ services:
         links:
             - grafana
         environment:
-            - TARGETS=grafana:80,grafana:81,grafana:9200
+            - TARGETS=grafana:80;grafana:81;grafana:9200
