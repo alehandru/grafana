@@ -16,7 +16,7 @@ done
 
 echo '******************** Starting snap agent ...'
 pushd /opt/snap
-snapteld --config config.yaml --log-path '' --log-level 3
+/opt/snap/sbin/snapteld --config /opt/snap/sbin/config.yaml --log-path '' --log-level 2
 popd
 echo 'done.'
 

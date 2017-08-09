@@ -28,6 +28,6 @@ WORKDIR /opt/snap
 
 ENTRYPOINT ["entrypoint.sh"]
 
-CMD ["snapteld --config config.yaml"]
+CMD ["/opt/snap/sbin/snapteld --config /opt/snap/sbin/config.yaml"]
 
 

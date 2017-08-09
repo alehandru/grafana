@@ -2,6 +2,7 @@ version: '3'
 
 services:
     snap:
+        container_name: snap
         hostname: snap-host
         build: 
             context: .
@@ -11,17 +12,8 @@ services:
         links:
             - wait
 
-    telegraf:
-        hostname: telegraf-host
-        build: 
-            context: .
-            dockerfile: Dockerfile.telegraf
-        depends_on:
-            - wait
-        links:
-            - wait
-
     grafana:
+        container_name: grafana
         build:
             context: .
             dockerfile: Dockerfile.grafana
@@ -39,6 +31,7 @@ services:
             - "2004"
             - "7002"
     wait:
+        container_name: wait
         image: waisbrot/wait
         depends_on:
             - grafana

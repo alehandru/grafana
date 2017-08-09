@@ -26,24 +26,6 @@ def print_data_sources(session):
     for d in datasources:
         print 'data source: ', d
 
-def add_telegraf_data_source(session):
-    url_data_sources = os.path.join(grafana_url, 'api', 'datasources')
-    response = session.post(
-       url_data_sources,
-       data=json.dumps({
-          'name': 'Telegraf',
-          'type': 'elasticsearch',
-          'url': 'http://%s:%u' % (elasticsearch_host, elasticsearch_port),
-          'access': 'proxy',
-          'isDefault': False,
-          'database': 'telegraf-*',
-          'basicAuth': False}),
-          headers={'Content-Type': 'application/json'})
-    if response.status_code == 200:
-        print 'Add Telegraf source - OK'
-    else:
-        print 'Add Telegraf source - FAILED'
-
 def add_snap_data_source(session):
     url_data_sources = os.path.join(grafana_url, 'api', 'datasources')
     response = session.post(
@@ -99,9 +81,7 @@ def login():
     return None
 
 session = login()
-add_telegraf_data_source(session)
 add_snap_data_source(session)
 print_data_sources(session)
-add_dashboard('telegraf-metrics.json')
 add_dashboard('snap-metrics.json')
 
