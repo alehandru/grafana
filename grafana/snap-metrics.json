@@ -57,108 +57,11 @@
           "colorValue": false,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Snap",
-          "decimals": 1,
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 3,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 1,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "max"
-                }
-              ],
-              "query": "Namespace: \"/intel/utmp/users/\"",
-              "refId": "A",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": "",
-          "title": "Users",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
             "rgba(48, 34, 95, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
           "datasource": "Snap",
-          "format": "none",
+          "format": "ms",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -229,13 +132,13 @@
                   "type": "cardinality"
                 }
               ],
-              "query": "Namespace:intel/procfs/cpu/*/user_percentage",
+              "query": "Namespace:system/cpu/user",
               "refId": "A",
               "timeField": "Timestamp"
             }
           ],
           "thresholds": "",
-          "title": "CPUs",
+          "title": "CPU",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -258,7 +161,7 @@
           ],
           "datasource": "Snap",
           "decimals": 0,
-          "format": "bits",
+          "format": "percent",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -328,7 +231,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace:\"intel/psutil/vm/total\"",
+              "query": "Namespace:\"system/mem/percent/used\"",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -425,7 +328,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/filesystem/*/space_used",
+              "query": "Namespace:system/disk/*/bytes/used",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -442,402 +345,6 @@
             }
           ],
           "valueName": "current"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(173, 95, 32, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Snap",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 5,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 2,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/raintank/processes/proc_num\"",
-              "refId": "A",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": "",
-          "title": "Processes",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(155, 47, 168, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Snap",
-          "decimals": 2,
-          "format": "s",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 6,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 2,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": "_value/100",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value/100"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace :\"intel/psutil/cpu/cpu-total/user\"",
-              "refId": "A",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": "",
-          "title": "Usage User",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(36, 134, 58, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Snap",
-          "decimals": 1,
-          "format": "s",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 7,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 2,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": "(_value/100)/60",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "(_value/100)/60"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/idle\"",
-              "refId": "A",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": "",
-          "title": "Uptime",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "current"
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": true,
-          "colorValue": false,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(109, 59, 18, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "datasource": "Snap",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 8,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 2,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "processes.total_threads",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "",
-              "refId": "A",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": "",
-          "title": "Total threads",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
         }
       ],
       "repeat": null,
@@ -848,7 +355,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": false,
+      "collapse": true,
       "height": "250px",
       "panels": [
         {
@@ -918,7 +425,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/system\"",
+              "query": "Namespace:\"/system/cpu/system\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -952,7 +459,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/user\"",
+              "query": "Namespace:\"/system/cpu/user\"",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -987,7 +494,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/irq\"",
+              "query": "Namespace:\"/system/cpu/interrupt\"",
               "refId": "C",
               "timeField": "Timestamp"
             },
@@ -1022,7 +529,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/steal\"",
+              "query": "Namespace:\"/system/cpu/steal\"",
               "refId": "D",
               "timeField": "Timestamp"
             },
@@ -1057,7 +564,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/softirq\"",
+              "query": "Namespace:\"/system/cpu/softirq\"",
               "refId": "E",
               "timeField": "Timestamp"
             },
@@ -1092,7 +599,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace:\"/intel/psutil/cpu/cpu-total/iowait\"",
+              "query": "Namespace:\"/system/cpu/iowait\"",
               "refId": "F",
               "timeField": "Timestamp"
             }
@@ -1191,7 +698,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"intel/psutil/load\"",
+              "query": "Namespace:\"system/load/1\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -1220,7 +727,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"intel/psutil/load5\"",
+              "query": "Namespace:\"system/load/5\"",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -1249,7 +756,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"intel/psutil/load15\"",
+              "query": "Namespace:\"system/load/15\"",
               "refId": "C",
               "timeField": "Timestamp"
             }
@@ -1300,7 +807,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": false,
+      "collapse": true,
       "height": 250,
       "panels": [
         {
@@ -1359,7 +866,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/disk/vda/io_time",
+              "query": "Namespace:system/disk/io_time",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -1387,7 +894,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/disk/vda/time_read",
+              "query": "Namespace:system/disk/*/time/read",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -1415,7 +922,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/disk/vda/time_write",
+              "query": "Namespace:system/disk/*/time/write",
               "refId": "C",
               "timeField": "Timestamp"
             }
@@ -1515,7 +1022,7 @@
                   "type": "min"
                 }
               ],
-              "query": "Namespace:intel/procfs/disk/vda/octets_read",
+              "query": "Namespace:system/io/*/bytes/read",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -1544,7 +1051,7 @@
                   "type": "min"
                 }
               ],
-              "query": "Namespace:intel/procfs/disk/vda/octets_write",
+              "query": "Namespace:system/io/*/bytes/write",
               "refId": "B",
               "timeField": "Timestamp"
             }
@@ -1646,7 +1153,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"intel/procfs/filesystem////space_percent_used\"",
+              "query": "Namespace:system/disk/*/percent/used",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -1749,7 +1256,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/filesystem/vda/space_used",
+              "query": "Namespace:system/disk/*/percent/used",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -1777,7 +1284,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/filesystem/vda/space_reserved",
+              "query": "Namespace:system/disk/*/percent/free",
               "refId": "C",
               "timeField": "Timestamp"
             }
@@ -1880,36 +1387,8 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:intel/procfs/filesystem/vda/space_free",
+              "query": "Namespace:system/disk/*/percent/free",
               "refId": "A",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "reserved",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:intel/procfs/filesystem/vda/space_reserved",
-              "refId": "B",
               "timeField": "Timestamp"
             }
           ],
@@ -1988,35 +1467,6 @@
           "steppedLine": false,
           "targets": [
             {
-              "alias": "used",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": null,
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/intel/procfs/swap/all/used_percent\"",
-              "refId": "A",
-              "timeField": "Timestamp"
-            },
-            {
               "alias": "free",
               "bucketAggs": [
                 {
@@ -2040,7 +1490,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/procfs/swap/all/free_percent\"",
+              "query": "Namespace:\"/system/swap/percent/free\"",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -2068,7 +1518,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/procfs/swap/all/cached_percent\"",
+              "query": "Namespace:\"/system/swap/percent/used\"",
               "refId": "C",
               "timeField": "Timestamp"
             }
@@ -2119,7 +1569,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": false,
+      "collapse": true,
       "height": 250,
       "panels": [
         {
@@ -2178,7 +1628,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/procfs/meminfo/mem_used\"",
+              "query": "Namespace:\"/system/mem/used\"",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -2206,36 +1656,8 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/procfs/meminfo/mem_free\"",
+              "query": "Namespace:\"/system/mem/free\"",
               "refId": "C",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "cached",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/intel/procfs/meminfo/cached\"",
-              "refId": "D",
               "timeField": "Timestamp"
             },
             {
@@ -2262,8 +1684,35 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:\"/intel/procfs/meminfo/mem_total\"",
+              "query": "Namespace:\"/system/mem/buffered\"",
               "refId": "B",
+              "timeField": "Timestamp"
+            },
+            {
+              "bucketAggs": [
+                {
+                  "field": "Timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0,
+                    "trimEdges": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "Data",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                }
+              ],
+              "query": "Namespace:\"/system/mem/cached\"",
+              "refId": "D",
               "timeField": "Timestamp"
             }
           ],
@@ -2367,7 +1816,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:/intel/procfs/meminfo/perc_mem_used",
+              "query": "Namespace:/system/mem/percent/used",
               "refId": "B",
               "timeField": "Timestamp"
             },
@@ -2400,7 +1849,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace:/intel/procfs/meminfo/perc_mem_available",
+              "query": "Namespace:/system/mem/percent/free",
               "refId": "A",
               "timeField": "Timestamp"
             }
@@ -2451,7 +1900,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": false,
+      "collapse": true,
       "height": 250,
       "panels": [
         {
@@ -2521,7 +1970,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace :intel/psutil/net/*/bytes_recv",
+              "query": "Namespace :system/net/*/bytes/rx",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -2555,7 +2004,7 @@
                   "type": "max"
                 }
               ],
-              "query": "Namespace :intel/psutil/net/*/bytes_sent",
+              "query": "Namespace :system/net/*/bytes/tx",
               "refId": "B",
               "timeField": "Timestamp"
             }
@@ -2662,7 +2111,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace :intel/psutil/net/*/packets_recv",
+              "query": "Namespace : system/net/*/packets/rx",
               "refId": "A",
               "timeField": "Timestamp"
             },
@@ -2696,7 +2145,7 @@
                   "type": "avg"
                 }
               ],
-              "query": "Namespace :intel/psutil/net/*/packets_sent",
+              "query": "Namespace : system/net/*/packets/tx",
               "refId": "B",
               "timeField": "Timestamp"
             }
@@ -2705,462 +2154,6 @@
           "timeFrom": "1h",
           "timeShift": null,
           "title": "Packets",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 1,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "pps",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Snap",
-          "fill": 1,
-          "id": 17,
-          "interval": ">1m",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "hideEmpty": true,
-            "hideZero": true,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "tcp_established",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/staples/procfs/netstat/tcp_established\"",
-              "refId": "A",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "tcp_close_wait",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/staples/procfs/netstat/tcp_close_wait\"",
-              "refId": "B",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "tcp_time_wait",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/staples/procfs/netstat/tcp_time_wait\"",
-              "refId": "C",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "tcp_syn_sent",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/staples/procfs/netstat/tcp_syn_sent\"",
-              "refId": "D",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "tcp_last_ack",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/staples/procfs/netstat/tcp_last_ack\"",
-              "refId": "E",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "tcp_listen",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "meta": {},
-                  "settings": {},
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:\"/staples/procfs/netstat/tcp_listen\"",
-              "refId": "F",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": "1h",
-          "timeShift": null,
-          "title": "TCP",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {
-            "Color": "#BA43A9"
-          },
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Snap",
-          "fill": 1,
-          "id": 16,
-          "interval": ">1m",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "hideEmpty": true,
-            "hideZero": true,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "repeat": "endpoint",
-          "scopedVars": {
-            "endpoint": {
-              "selected": true,
-              "text": "telegraf-host",
-              "value": "telegraf-host"
-            }
-          },
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "drop out",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": "_value/53",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value/53"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:intel/procfs/iface/*/drop_sent",
-              "refId": "A",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "drop in",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "hide": false,
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": "_value/53",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value/53"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:intel/procfs/iface/*/drop_recv",
-              "refId": "B",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "error out",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": "_value/53",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value/53"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:intel/procfs/iface/*/errs_sent",
-              "refId": "C",
-              "timeField": "Timestamp"
-            },
-            {
-              "alias": "error in",
-              "bucketAggs": [
-                {
-                  "field": "Timestamp",
-                  "id": "2",
-                  "settings": {
-                    "interval": "auto",
-                    "min_doc_count": 0,
-                    "trimEdges": 0
-                  },
-                  "type": "date_histogram"
-                }
-              ],
-              "dsType": "elasticsearch",
-              "hide": false,
-              "metrics": [
-                {
-                  "field": "Data",
-                  "id": "1",
-                  "inlineScript": "_value/53",
-                  "meta": {},
-                  "settings": {
-                    "script": {
-                      "inline": "_value/53"
-                    }
-                  },
-                  "type": "avg"
-                }
-              ],
-              "query": "Namespace:intel/procfs/iface/*/errs_recv",
-              "refId": "D",
-              "timeField": "Timestamp"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": "1h",
-          "timeShift": null,
-          "title": "DROP",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -3240,5 +2233,5 @@
   },
   "timezone": "browser",
   "title": "Snap",
-  "version": 11
+  "version": 20
 }
