@@ -1,0 +1,16 @@
+---
+version: 1
+schedule:
+  # Run every minute
+  type: cron
+  interval: "0 * * * * *"
+deadline: "60s"
+workflow:
+  collect:
+    metrics:
+        /intel/elasticsearch/node/*: {}
+    publish:
+      - plugin_name: publisher-appoptics
+        config:
+          period: 60
+          floor_seconds: 60
