@@ -8,26 +8,37 @@ RUN apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get install -qy ca-certificates && \
     apt-get install -qy apt-utils && \
+    apt-get install -qy apt-transport-https && \
     apt-get update
 
 RUN apt-get -y install vim mc && \
     apt-get -y install iputils-ping curl && \
 	apt-get -y update
 
-RUN mkdir -p /opt/snap
+# Add PackageCloud repository
+RUN echo "deb https://packagecloud.io/AppOptics/appoptics-snap/ubuntu/ trusty main" > /etc/apt/sources.list.d/appoptics.list && \
+    curl -L https://packagecloud.io/AppOptics/appoptics-snap/gpgkey | apt-key add - && \
+    apt-get update
 
-ENV PATH "/opt/snap:$PATH"
+# Install host agent
+RUN apt-get -y install appoptics-snaptel
 
-COPY ./snap /opt/snap
+ENV PATH "/opt/appoptics:$PATH"
 
-RUN chmod 755 -R /opt/snap
+WORKDIR /opt/appoptics
+
+# Copy the entry point
+COPY ./entrypoint.sh /opt/appoptics/entrypoint.sh
+
+RUN chmod 755 -R /opt/appoptics
+
+# Copy configuration file
+COPY ./config.yaml /opt/appoptics/etc/config.yaml
 
 EXPOSE 8181
 
-WORKDIR /opt/snap
+ENTRYPOINT ["/opt/appoptics/entrypoint.sh"]
 
-ENTRYPOINT ["entrypoint.sh"]
-
-CMD ["/opt/snap/sbin/snapteld --config /opt/snap/sbin/config.yaml"]
+CMD ["/opt/appoptics/sbin/snapteld --config /opt/appoptics/etc/config.yaml"]
 
 
