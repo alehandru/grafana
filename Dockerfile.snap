@@ -35,6 +35,11 @@ RUN chmod 755 -R /opt/appoptics
 # Copy configuration file
 COPY ./config.yaml /opt/appoptics/etc/config.yaml
 
+# Copy elastic search plugin configuration
+COPY ./plugins/snap-plugin-collector-elasticsearch /opt/appoptics/bin
+COPY ./plugins/elasticsearch.yaml /opt/appoptics/etc/plugins.d
+COPY ./plugins/task-elasticsearch.yaml /opt/appoptics/etc/tasks.d
+
 EXPOSE 8181
 
 ENTRYPOINT ["/opt/appoptics/entrypoint.sh"]
